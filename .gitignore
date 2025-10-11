@@ -1,0 +1,22 @@
+# Java build artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.log
+
+# Build directories
+target/
+build/
+out/
