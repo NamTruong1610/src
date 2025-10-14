@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
 
-<VBox alignment="CENTER" styleClass="background" prefWidth="540.0" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" styleClass="background" prefWidth="540.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerDashboardController">
+    <ImageView fitWidth="540" fitHeight="300">
+        <Image url="/view/image/banner.png"/>
+    </ImageView>
 
+    <VBox alignment="CENTER" prefWidth="540.0" spacing="10">
+        <Separator/>
+        <Label fx:id="teamNameLbl" styleClass="heading"/>
+        <Separator/>
+
+        <ImageView fx:id="jerseyImage" fitWidth="150" fitHeight="150" preserveRatio="true"/>
+
+        <HBox alignment="CENTER">
+            <Button fx:id="withdrawBtn" styleClass="button" text="Withdraw" onAction="#handleWithdraw"/>
+            <Button fx:id="manageBtn" styleClass="button" text="Manage" onAction="#handleManage"/>
+        </HBox>
+
+        <HBox>
+            <Button fx:id="swapTeamBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Swap Team" onAction="#handleSwapTeam"/>
+            <Button fx:id="closeBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Close" onAction="#handleExit"/>
+        </HBox>
+    </VBox>
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
 </VBox>

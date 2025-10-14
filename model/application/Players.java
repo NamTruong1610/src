@@ -46,4 +46,8 @@ public class Players {
         }
         return sb.toString();
     }
+
+    public boolean contains(Player player) {
+        return players.contains(player);
+    }
 }

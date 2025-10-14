@@ -20,7 +20,6 @@ public class ErrorController extends au.edu.uts.ap.javafx.Controller<Unauthorise
     private String exceptionName;
     private String errorMessage;
 
-    // Method to set details before the stage is shown
     public void setErrorDetails(String exceptionName, String errorMessage) {
         this.exceptionName = exceptionName;
         this.errorMessage = errorMessage;
@@ -57,7 +56,7 @@ public class ErrorController extends au.edu.uts.ap.javafx.Controller<Unauthorise
         stage.sizeToScene();
         stage.setResizable(false);
         
-        controller.setupUI(); // Setup UI after stage properties are set
+        controller.setupUI(); 
         stage.show();
     }
 }
