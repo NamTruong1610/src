@@ -14,9 +14,6 @@ public class SwapController extends Controller<League> {
     @FXML private Button swapBtn;
     @FXML private Button closeBtn;
     
-    private Manager getManager() {
-        return model.getLoggedInManager();
-    }
 
     @FXML
     private void initialize() {
@@ -28,7 +25,7 @@ public class SwapController extends Controller<League> {
     @FXML
     private void handleSwap() {
         Team selectedTeam = teamLv.getSelectionModel().getSelectedItem();
-        Manager manager = getManager();
+        Manager manager = model.getLoggedInManager();
         
         if (selectedTeam != null && manager != null) {
             model.setManagerForTeam(manager, selectedTeam);

@@ -20,14 +20,9 @@ public class ManagerDashboardController extends Controller<League> {
     @FXML private Button manageBtn; 
     @FXML private Button swapTeamBtn; 
 
-    private Manager getManager() {
-        return model.getLoggedInManager();
-    }
-
-
     @FXML
     private void initialize() {
-        Manager manager = getManager();
+        Manager manager = model.getLoggedInManager();;
         if (manager != null) {
             teamNameLbl.textProperty().bind(
                 Bindings.createStringBinding(
@@ -51,13 +46,11 @@ public class ManagerDashboardController extends Controller<League> {
     }
 
     private void updateJerseyImage(Team team) {
-        String imageFileName;
-        if (team == null) {
-            imageFileName = "none.png";
-        } else {
+        String imageFileName = "none.png";
+        if (team != null) {
             String teamNameLower = team.getTeamName().toLowerCase();
             imageFileName = teamNameLower + ".png";
-        }
+        } 
 
         try {
             Image jersey = new Image(getClass().getResourceAsStream("/view/image/" + imageFileName));
@@ -66,7 +59,7 @@ public class ManagerDashboardController extends Controller<League> {
             System.err.println("Could not find jersey image: " + imageFileName);
             try {
                 Image errorImage = new Image(getClass().getResourceAsStream("/view/image/error.png"));
-                 jerseyImage.setImage(errorImage);
+                jerseyImage.setImage(errorImage);
             } catch (Exception ex) {
                 System.err.println("Could not load fallback image.");
             }
@@ -75,9 +68,9 @@ public class ManagerDashboardController extends Controller<League> {
 
     @FXML
     private void handleWithdraw() {
-        Team currentTeam = getManager().getTeam();
+        Team currentTeam = model.getLoggedInManager().getTeam();
         if (currentTeam != null) {
-            model.withdrawManagerFromTeam(getManager());
+            model.withdrawManagerFromTeam(model.getLoggedInManager());
         }
     }
 
@@ -86,7 +79,7 @@ public class ManagerDashboardController extends Controller<League> {
         this.stage.close(); 
         
         try {
-            Team team = getManager().getTeam();
+            Team team = model.getLoggedInManager().getTeam();
             if (team != null) {
                 ViewLoader.showStage(team, "/view/TeamDashboardView.fxml", "Team Dashboard", new Stage());
             }
