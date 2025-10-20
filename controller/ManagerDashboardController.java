@@ -22,16 +22,13 @@ public class ManagerDashboardController extends Controller<League> {
 
     @FXML
     private void initialize() {
-        Manager manager = model.getLoggedInManager();;
+        Manager manager = model.getLoggedInManager();
         if (manager != null) {
+            
             teamNameLbl.textProperty().bind(
-                Bindings.createStringBinding(
-                    () -> {
-                        Team team = manager.getTeam();
-                        return (team != null) ? team.toString() : "No team";
-                    },
-                    manager.teamProperty() 
-                )
+                Bindings.when(manager.teamProperty().isNull())
+                .then("No team")
+                .otherwise(manager.teamProperty().asString())
             );
 
             manager.teamProperty().addListener((observable, oldTeam, newTeam) -> {
@@ -51,19 +48,8 @@ public class ManagerDashboardController extends Controller<League> {
             String teamNameLower = team.getTeamName().toLowerCase();
             imageFileName = teamNameLower + ".png";
         } 
-
-        try {
-            Image jersey = new Image(getClass().getResourceAsStream("/view/image/" + imageFileName));
-            jerseyImage.setImage(jersey);
-        } catch (Exception e) {
-            System.err.println("Could not find jersey image: " + imageFileName);
-            try {
-                Image errorImage = new Image(getClass().getResourceAsStream("/view/image/error.png"));
-                jerseyImage.setImage(errorImage);
-            } catch (Exception ex) {
-                System.err.println("Could not load fallback image.");
-            }
-        }
+        Image jersey = new Image(getClass().getResourceAsStream("/view/image/" + imageFileName));
+        jerseyImage.setImage(jersey);
     }
 
     @FXML
@@ -77,24 +63,15 @@ public class ManagerDashboardController extends Controller<League> {
     @FXML
     private void handleManage() {
         this.stage.close(); 
-        
-        try {
-            Team team = model.getLoggedInManager().getTeam();
-            if (team != null) {
-                ViewLoader.showStage(team, "/view/TeamDashboardView.fxml", "Team Dashboard", new Stage());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        Team team = model.getLoggedInManager().getTeam();
+        if (team != null) {
+            ViewLoader.showStage(team, "/view/TeamDashboardView.fxml", "Team Dashboard", new Stage());
         }
     }
 
     @FXML
     private void handleSwapTeam() {
-        try {
-            ViewLoader.showStage(model, "/view/SwapView.fxml", "Swap Team", new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ViewLoader.showStage(model, "/view/SwapView.fxml", "Swap", new Stage());
     }
 
     @FXML

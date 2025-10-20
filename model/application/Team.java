@@ -76,7 +76,6 @@ public class Team {
         allPlayers.remove(player);
     }
 
-    /** Assigns or swaps a player in the active team array. */
     public void assignPlayerToSlot(Player player, int slotIndex) throws FillException {
         if (player.getTeam() != this) {
             return; 
@@ -91,10 +90,6 @@ public class Team {
         
         if (currentSlot == slotIndex) {
             return;
-        }
-
-        if (currentSlot != -1) {
-            currentTeam[currentSlot] = null;
         }
         
         if (existingPlayerInTargetSlot != null) {

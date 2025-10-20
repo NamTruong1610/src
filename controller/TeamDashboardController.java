@@ -47,8 +47,7 @@ public class TeamDashboardController extends Controller<Team> {
         activeJerseySlots.add(slot4Iv);
 
         teamNameLbl.setText(model.toString());
-        String teamNameLower = model.getTeamName().toLowerCase();
-        teamJerseyPath = "/view/image/" + teamNameLower + ".png";
+        teamJerseyPath = "/view/image/" + model.getTeamName().toLowerCase() + ".png";
         
         playerTv.setItems(model.getAllPlayers().getPlayers());
         nameCol.setCellValueFactory(cellData -> cellData.getValue().fullNameProperty());
@@ -74,11 +73,8 @@ public class TeamDashboardController extends Controller<Team> {
             Player player = currentTeam[i];
 
             String imagePath = (player != null) ? teamJerseyPath : noneJerseyPath;
-            try {
-                slot.setImage(new Image(getClass().getResourceAsStream(imagePath)));
-            } catch (Exception e) {
-                System.err.println("Error loading jersey image: " + imagePath);
-            }
+            
+            slot.setImage(new Image(getClass().getResourceAsStream(imagePath)));
             
             Tooltip tooltip = new Tooltip((player != null) ? player.getFullName() : "Unallocated");
             Tooltip.install(slot, tooltip);
