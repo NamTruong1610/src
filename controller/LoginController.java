@@ -2,6 +2,7 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.application.*;
@@ -11,9 +12,12 @@ import model.exception.UnauthorisedAccessException;
 public class LoginController extends Controller<League> {
 
     @FXML private TextField managerIdTf;
+    @FXML private Button loginBtn;
+    @FXML private Button closeBtn;
 
     @FXML
     private void initialize() {
+        loginBtn.disableProperty().bind(managerIdTf.textProperty().isEmpty());
     }
 
     @FXML
@@ -26,8 +30,6 @@ public class LoginController extends Controller<League> {
             this.stage.close(); 
             ViewLoader.showStage(model, "/view/ManagerDashboardView.fxml", "Manager Dashboard", new Stage());
             
-
-
 
         } catch (NumberFormatException e) {
             String message = "Incorrect format for manager id"; 
@@ -51,7 +53,7 @@ public class LoginController extends Controller<League> {
 
     @FXML
     private void handleExit() {
-        this.stage.close();
+        stage.close();
     }
 
 }

@@ -19,8 +19,8 @@
             <TextField fx:id="managerIdTf"/>
         </HBox>
         <HBox>
-            <Button styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Login" onAction="#handleLogin"/>
-            <Button styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Exit" onAction="#handleExit"/>
+            <Button fx:id="loginBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Login" onAction="#handleLogin"/>
+            <Button fx:id="closeBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Exit" onAction="#handleExit"/>
         </HBox>
     </VBox>
     <stylesheets>
