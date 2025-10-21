@@ -3,7 +3,6 @@ package controller;
 import java.util.List;
 
 import au.edu.uts.ap.javafx.Controller;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -92,12 +91,7 @@ public class TeamDashboardController extends Controller<Team> {
         if (fullName.isEmpty()) return;
 
         try {
-            Player player = League.getInstance().getPlayers().player(fullName);
-            
-            if (player == null) {
-                throw new InvalidSigningException("Player does not exist within the league");
-            }
-            
+            Player player = League.getInstance().getPlayers().player(fullName);    
             model.signPlayer(player);
             
             signTf.clear();

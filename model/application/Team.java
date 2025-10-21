@@ -57,6 +57,9 @@ public class Team {
     }
 
     public void signPlayer(Player player) throws InvalidSigningException {
+        if (player == null) {
+            throw new InvalidSigningException("Player does not exist within the league");
+        }
         if (player.getTeam() == this) {
             throw new InvalidSigningException(player.getFullName() + " is already signed to your team");
         }
