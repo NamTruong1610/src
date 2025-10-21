@@ -101,8 +101,6 @@ public class TeamDashboardController extends Controller<Team> {
             model.signPlayer(player);
             
             signTf.clear();
-            setupActiveTeamSlots(); 
-            
         } catch (InvalidSigningException e) {
             showError(e.getClass().getSimpleName(), e.getMessage());
         } catch (Exception e) {
@@ -117,8 +115,6 @@ public class TeamDashboardController extends Controller<Team> {
         
         try {
             model.unsignPlayer(selectedPlayer);
-            setupActiveTeamSlots(); 
-            
         } catch (InvalidSigningException e) {
             showError(e.getClass().getSimpleName(), e.getMessage());
         } catch (Exception e) {
