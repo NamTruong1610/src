@@ -1,7 +1,6 @@
 package controller;
 
 import au.edu.uts.ap.javafx.Controller;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.application.League;
@@ -18,7 +17,7 @@ public class SwapController extends Controller<League> {
     @FXML
     private void initialize() {
         teamLv.setItems(model.getManageableTeams().getTeams());
-        swapBtn.disableProperty().bind(Bindings.isNull(teamLv.getSelectionModel().selectedItemProperty()));
+        swapBtn.disableProperty().bind(teamLv.getSelectionModel().selectedItemProperty().isNull());
         
     }
 

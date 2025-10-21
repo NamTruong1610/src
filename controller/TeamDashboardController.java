@@ -54,13 +54,10 @@ public class TeamDashboardController extends Controller<Team> {
         positionCol.setCellValueFactory(cellData -> cellData.getValue().positionProperty());
         
         signBtn.disableProperty().bind(signTf.textProperty().isEmpty());
-        unsignBtn.disableProperty().bind(Bindings.isNull(playerTv.getSelectionModel().selectedItemProperty()));
+        unsignBtn.disableProperty().bind(playerTv.getSelectionModel().selectedItemProperty().isNull());
 
         setupActiveTeamSlots();
         
-        model.getAllPlayers().getPlayers().addListener((javafx.collections.ListChangeListener.Change<? extends Player> change) -> {
-            setupActiveTeamSlots();
-        });
     }
 
 

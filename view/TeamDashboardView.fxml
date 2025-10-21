@@ -27,31 +27,32 @@
             <VBox spacing="10" VBox.vgrow="ALWAYS" prefWidth="350">
                 <TableView fx:id="playerTv" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="nameCol" text="Name" prefWidth="175"/>
-                        <TableColumn fx:id="positionCol" text="Position" prefWidth="175"/>
+                        <TableColumn fx:id="nameCol" text="Name" prefWidth="154"/>
+                        <TableColumn fx:id="positionCol" text="Position" prefWidth="154"/>
                     </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                    </columnResizePolicy>
                 </TableView>
             </VBox>
             
-            <VBox alignment="TOP_CENTER" spacing="10" prefWidth="170" VBox.vgrow="ALWAYS" style="-fx-background-color: #f7f7f7;">
-                <padding>
-                    <Insets top="10" left="10" right="10" bottom="10"/>
-                </padding>
+            <VBox alignment="CENTER" spacing="10" prefWidth="170" VBox.vgrow="ALWAYS" style="-fx-background-color: #f7f7f7;">
+
+                <HBox alignment="TOP_CENTER">
+                    <Label text="Active Team" HBox.hgrow="ALWAYS" styleClass="activeTeamHeader" maxWidth="Infinity" alignment="CENTER"/>
+                </HBox>
                 
-                <Label text="Active Team" styleClass="label"/> 
-                
-                <GridPane alignment="CENTER" hgap="10" vgap="10">
-                    <ImageView fx:id="slot0Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="0" onMouseClicked="#handleSlotClick"/>
-                    
-                    <ImageView fx:id="slot1Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="0" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
-                    <ImageView fx:id="slot2Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
-                    <ImageView fx:id="slot3Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
-                    
-                    <ImageView fx:id="slot4Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#handleSlotClick"/>
-                </GridPane>
+                <VBox VBox.vgrow="ALWAYS" alignment="CENTER">
+                    <GridPane alignment="CENTER" hgap="10" vgap="10">
+                        <padding>
+                            <Insets left="10" right="10"/>
+                        </padding>
+                        <ImageView fx:id="slot0Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="0" onMouseClicked="#handleSlotClick"/>
+                        
+                        <ImageView fx:id="slot1Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="0" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
+                        <ImageView fx:id="slot2Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
+                        <ImageView fx:id="slot3Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#handleSlotClick"/>
+                        
+                        <ImageView fx:id="slot4Iv" fitWidth="60" fitHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#handleSlotClick"/>
+                    </GridPane>
+                </VBox>
             </VBox>
             
         </HBox>
