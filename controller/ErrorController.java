@@ -31,17 +31,7 @@ public class ErrorController extends au.edu.uts.ap.javafx.Controller<Unauthorise
 
     public void setupUI() {
         exceptionNameLbl.setText(exceptionName);
-        errorMessageLbl.setText(errorMessage);
-
-        String specificErrorMsg = errorMessage;
-        
-        exceptionNameLbl.setText("UnauthorisedAccessException");
-        errorMessageLbl.setText(specificErrorMsg);
-        
-        closeBtn.setOnAction(event -> {
-            Stage stage = (Stage) closeBtn.getScene().getWindow();
-            stage.close();
-        });
+        errorMessageLbl.setText(errorMessage);    
     }
 
     public static void showErrorStage(String exceptionName, String errorMessage, Stage stage) throws IOException {
@@ -58,5 +48,11 @@ public class ErrorController extends au.edu.uts.ap.javafx.Controller<Unauthorise
         
         controller.setupUI(); 
         stage.show();
+    }
+
+    @FXML
+    private void handleExit() {
+        Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
     }
 }

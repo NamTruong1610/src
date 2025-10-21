@@ -15,7 +15,7 @@
         <Label fx:id="exceptionNameLbl" styleClass="error"/>
         <Separator/>
         <Label fx:id="errorMessageLbl" styleClass="label"/>
-        <Button fx:id="closeBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Close"/>
+        <Button fx:id="closeBtn" styleClass="button" prefWidth="270" HBox.hgrow="ALWAYS" text="Close" maxWidth="Infinity" onAction="#handleExit"/>
     </VBox>
     <stylesheets>
         <URL value="@style.css"/>
